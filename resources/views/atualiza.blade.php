@@ -221,6 +221,7 @@ const onchangeModalidade =() =>{
 
   if(mod.trim() == 'PRESTADOR DE SAÚDE')
   {
+    
     document.getElementById('cnesdiv').style.visibility = 'visible';
   }
   else{
