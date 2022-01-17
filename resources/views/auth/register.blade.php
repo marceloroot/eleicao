@@ -7,6 +7,33 @@
       @csrf
        
 
+
+      <div class="row">
+                   
+            <div class="mb-3  col-6">
+                <label for="tags" class="form-label">Representatividade<span style="color:red">*</span></label>
+                <select class="form-select" name="modalidade" required id="modalidade" 
+                         onChange="onchangeModalidade()" aria-label="tipo">
+                  <option value="USUÁRIO">USUÁRIO</option>
+                  <option value="REPRESENTANTES DE ENTIDADES">REPRESENTANTES DE ENTIDADES</option>
+                  <option value="PROFISSIONAL DE SAÚDE">PROFISSIONAL DE SAÚDE</option>
+                  <option value="PRESTADOR DE SAÚDE">PRESTADOR DE SAÚDE</option>
+                </select>
+                @if($errors->has('tipo'))
+                <div class="error">{{ $errors->first('tipo') }}</div>
+                @endif
+              </div>
+
+              <div class="mb-3  col-6" id="cnesdiv">
+                <label for="tags" class="form-label">CNES</label>
+                <input type="text" class="form-control"  name="cnes" id="cnes" />
+                @if($errors->has('cnes'))
+                <div class="cnes">{{ $errors->first('cnes') }}</div>
+                @endif
+              </div>
+
+            </div>
+
             <div class="row">
                     
                 <div class="mb-3 col-6">      
@@ -131,6 +158,25 @@
                        @endif
                      </div>
                 </div>
+
+                <!--Titulo cnpj-->
+                <div class="row">
+                  <div class="mb-3  col-6">
+                     <label for="tags" class="form-label">Titulo de Eleiçao</label>
+                     <input type="text" class="form-control" required name="tituloeleitor" id="tituloeleitor">
+                     @if($errors->has('tituloeleitor'))
+                     <div class="error">{{ $errors->first('tituloeleitor') }}</div>
+                     @endif
+                   </div>
+                 
+                   <div class="mb-3  col-6"  id="cnpjdiv">
+                     <label for="tags" class="form-label">CNPJ</label>
+                     <input type="text" max="2" class="form-control"  name="cnpj" id="cnpj" />
+                     @if($errors->has('cnpj'))
+                     <div class="error">{{ $errors->first('cnpj') }}</div>
+                     @endif
+                   </div>
+              </div>
                 
                 <div class="row">
                    
@@ -146,9 +192,9 @@
                         @endif
                       </div>
                   
-                      <div class="mb-3  col-6">
+                      <div class="mb-3  col-6" id="regiaodiv">
                         <label for="tags" class="form-label">regiao<span style="color:red">*</span></label>
-                        <select class="form-select" name="regiao" required id="regiao" aria-label="regiao">
+                        <select class="form-select" name="regiao"  id="regiao" aria-label="regiao">
                           <option value="">Selecione uma opcao</option>
                           <option value="Região Vila Formosa">Região Vila Formosa</option>
                           <option value="Região Pinheirinho">Região Pinheirinho</option>
@@ -161,6 +207,8 @@
                         <div class="error">{{ $errors->first('regiao') }}</div>
                         @endif
                       </div>
+
+                   
 
                 </div>
                     
@@ -184,7 +232,42 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" crossorigin="anonymous"></script>
 
 <script>
+document.getElementById('regiao').required = true;
+document.getElementById('cnesdiv').style.visibility = 'hidden' ;
+document.getElementById('cnpjdiv').style.visibility = 'hidden' ;
 
+const onchangeModalidade =() =>{
+ const mod =  document.getElementById('modalidade').value;
+ document.getElementById('cnes').value ="";
+ if(mod.trim() != 'USUÁRIO')
+ {
+     document.getElementById('regiao').required = false;
+     document.getElementById('regiao').value = "";
+     document.getElementById('regiaodiv').style.visibility = 'hidden' ;
+ }
+ else{
+  document.getElementById('regiao').required = true;
+  document.getElementById('regiaodiv').style.visibility = 'visible' ;
+ }
+
+ if(mod.trim() == 'PRESTADOR DE SAÚDE')
+ {
+  document.getElementById('cnesdiv').style.visibility = 'visible';
+ }
+ else{
+  document.getElementById('cnesdiv').style.visibility = 'hidden' ;
+ }
+
+ if(mod.trim() == 'REPRESENTANTES DE ENTIDADES')
+ {
+  document.getElementById('cnpj').required = true;
+  document.getElementById('cnpjdiv').style.visibility = 'visible';
+ }
+ else{
+  document.getElementById('cnpj').required = false;
+  document.getElementById('cnpjdiv').style.visibility = 'hidden' ;
+ }
+}
 
 
 preencherFormulario =(endereco)=>{

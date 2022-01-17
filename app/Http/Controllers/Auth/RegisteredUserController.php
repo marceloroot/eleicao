@@ -47,13 +47,14 @@ class RegisteredUserController extends Controller
             return redirect()->back()->withErrors($validator);
         }
         
-       
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'cpf'=> $request->cpf,
+            'cnpj'=> $request->cnpj,
+            'tituloeleitor'=> $request->tituloeleitor,
             'telefone'=> $request->telefone,
             'cep'=> $request->cep,
             'logradouro'=> $request->logradouro,
@@ -63,6 +64,8 @@ class RegisteredUserController extends Controller
             'uf'=> $request->uf,
             'tipo'=> $request->tipo,
             'regiao'=> $request->regiao,
+            'cnes'=> $request->cnes,
+            'modalidade'=> $request->modalidade,
         ])->givePermissionTo('user');
 
         event(new Registered($user));

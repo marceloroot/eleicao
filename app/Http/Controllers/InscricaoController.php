@@ -173,15 +173,16 @@ class InscricaoController extends Controller
         }
         //Verifica se ja tem um inscricao feita por esse usuario se sim ele manda para pagina pdf
 
-
+    
 
         if ($inscricao) {
             $inscricao->fill($request->all());
             if ($inscricao->save()) {
                 
-                return redirect()->route('pdf');
+                return redirect()->route('dashboard');
             }
         }
+        
         return redirect()->route('dashboard');
     }
 

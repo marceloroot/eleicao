@@ -24,10 +24,11 @@
     <thead>
       <tr>
     
-        <th>Nome</th>
+        <th>NOME</th>
+        <th>ELEITOR OU CANDIDATO</th>
+        <th>REPRESENTATIVIDADE</th>
         <th>CPF</th>
-        <th>Tipo</th>
-        <th>Regiao</th>
+        <th>TELEFONE</th>
         <th></th>
       </tr>
     </thead>
@@ -37,9 +38,11 @@
         <tr>
            
             <td>{{Str::upper($item->name)}}</td>
-            <td>{{Str::upper($item->cpf)}}</td>
             <td>{{Str::upper($item->tipo)}}</td>
-            <td>{{Str::upper($item->regiao)}}</td>
+            <td>{{Str::upper($item->modalidade)}}</td>
+            <td>{{Str::upper($item->cpf)}}</td>
+            <td>{{Str::upper($item->telefone)}}</td>
+ 
             <td><a href="{{ route('listaarquivoadm',['id'=>$item->id]) }}" >Ver Arquivos</a></td>
           </tr>
        

@@ -25,31 +25,33 @@ class User extends Authenticatable
         'cpf',
         'telefone',
         'cep',
+        'cnpj',
+        'tituloeleitor',
         'logradouro',
         'complemento',
         'bairro',
         'localidade',
         'uf',
         'tipo',
-        //'tipoenum',
         'regiao',
-      //  'regiaoenum',
+        'cnes',
+        'modalidade',
     ];
 
     static $rules =[
         'name'=>'required',
         'email' =>'required|unique:users',
         'cpf' =>'required|unique:users',
-        'regiao'=>'required',
         'tipo'=>'required|',
         'cep'=>'required|',
+        'modalidade'=>'required|',
     ];
     static $rulesUpdade =[
         'name'=>'required',
         'cpf' =>'required',
-        'regiao'=>'required',
         'tipo'=>'required|',
         'cep'=>'required|',
+        'modalidade'=>'required|',
     ];
     
     /**

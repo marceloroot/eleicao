@@ -41,7 +41,6 @@
               <td>{{Str::upper($item->caminho)}}</td>
               <td><a href="{{ Storage::url("{$item->caminho}") }}">Ver Arquivo</a></td>
             </tr>
-          url
           @endforeach
        
        

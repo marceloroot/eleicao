@@ -15,7 +15,33 @@
       <form class="mt-5" method="POST" action="{{ route('put',['id'=>$inscricao->id]) }}">
         @method('PUT')
         @csrf
-              
+            
+        <div class="row">
+                      
+              <div class="mb-3  col-6">
+                  <label for="tags" class="form-label">Representatividade<span style="color:red">*</span></label>
+                  <select class="form-select" name="modalidade" required id="modalidade" 
+                          onChange="onchangeModalidade()" aria-label="tipo">
+                    <option value="USUÁRIO">USUÁRIO</option>
+                    <option value="REPRESENTANTES DE ENTIDADES">REPRESENTANTES DE ENTIDADES</option>
+                    <option value="PROFISSIONAL DE SAÚDE">PROFISSIONAL DE SAÚDE</option>
+                    <option value="PRESTADOR DE SAÚDE">PRESTADOR DE SAÚDE</option>
+                  </select>
+                  @if($errors->has('tipo'))
+                  <div class="error">{{ $errors->first('tipo') }}</div>
+                  @endif
+                </div>
+
+                <div class="mb-3  col-6" id="cnesdiv">
+                  <label for="tags" class="form-label">CNES</label>
+                  <input type="text" class="form-control"  name="cnes" id="cnes" />
+                  @if($errors->has('cnes'))
+                  <div class="cnes">{{ $errors->first('cnes') }}</div>
+                  @endif
+                </div>
+
+              </div>
+
               <div class="row">
 
                   <div class="mb-3 col-6">
@@ -100,9 +126,29 @@
                    
                      <div class="mb-3  col-6">
                        <label for="tags" class="form-label">Telefone</label>
-                       <input type="text" max="2" class="form-control"  name="telefone" id="telefone" value={{$inscricao->telefone}}/>
+                       <input type="text" max="2" class="form-control"  name="telefone" id="telefone" value={{$inscricao->telefone}} />
                        @if($errors->has('telefone'))
                        <div class="error">{{ $errors->first('telefone') }}</div>
+                       @endif
+                     </div>
+                </div>
+
+
+                  <!--Titulo cnpj-->
+                  <div class="row">
+                    <div class="mb-3  col-6">
+                       <label for="tags" class="form-label">Titulo de Eleiçao</label>
+                       <input type="text" class="form-control" required name="tituloeleitor" id="tituloeleitor" value={{$inscricao->tituloeleitor}}>
+                       @if($errors->has('tituloeleitor'))
+                       <div class="error">{{ $errors->first('tituloeleitor') }}</div>
+                       @endif
+                     </div>
+                   
+                     <div class="mb-3  col-6"  id="cnpjdiv">
+                       <label for="tags" class="form-label">CNPJ</label>
+                       <input type="text" max="2" class="form-control"  name="cnpj" id="cnpj" />
+                       @if($errors->has('cnpj'))
+                       <div class="error">{{ $errors->first('cnpj') }}</div>
                        @endif
                      </div>
                 </div>
@@ -121,7 +167,7 @@
                         @endif
                       </div>
                   
-                      <div class="mb-3  col-6">
+                      <div class="mb-3  col-6" id="regiaodiv">
                         <label for="tags" class="form-label">regiao<span style="color:red">*</span></label>
                         <select class="form-select" name="regiao" required id="regiao" aria-label="regiao">
                           <option value="">Selecione uma opcao</option>
@@ -154,6 +200,62 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" crossorigin="anonymous"></script>
 
 <script>
+document.getElementById('regiao').required = true;
+document.getElementById('cnesdiv').style.visibility = 'hidden' ;
+document.getElementById('cnpjdiv').style.visibility = 'hidden' ;
+document.getElementById('cnes').value = {!! json_encode($inscricao->cnes) !!};
+document.getElementById('cnpj').value = {!! json_encode($inscricao->cnpj) !!};
+const onchangeModalidade =() =>{
+ const mod =  document.getElementById('modalidade').value;
+ document.getElementById('cnes').value ="";
+  if(mod.trim() != 'USUÁRIO')
+  {
+      document.getElementById('regiao').required = false;
+      document.getElementById('regiao').value = "";
+      document.getElementById('regiaodiv').style.visibility = 'hidden' ;
+  }
+  else{
+    document.getElementById('regiao').required = true;
+    document.getElementById('regiaodiv').style.visibility = 'visible' ;
+  }
+
+  if(mod.trim() == 'PRESTADOR DE SAÚDE')
+  {
+    document.getElementById('cnesdiv').style.visibility = 'visible';
+  }
+  else{
+    
+    document.getElementById('cnesdiv').style.visibility = 'hidden' ;
+  }
+
+  if(mod.trim() == 'REPRESENTANTES DE ENTIDADES')
+ {
+  document.getElementById('cnpj').required = true;
+  document.getElementById('cnpjdiv').style.visibility = 'visible';
+ }
+ else{
+  document.getElementById('cnpj').value = '';
+  document.getElementById('cnpj').required = false;
+  document.getElementById('cnpjdiv').style.visibility = 'hidden' ;
+ }
+  }
+
+
+
+  // ---------------------Comeco Representatividade----------------------------
+      //Variavel para escolapublica
+      modalidade =   {!! json_encode($inscricao->modalidade) !!}
+      //pega o escolapublica
+      var selectModalidade = document.getElementById('modalidade');
+      for(i=0;i<=selectModalidade.options.length  -1;i++){ 
+                    if(selectModalidade.options[i].value == modalidade){
+                      selectModalidade.options[i].selected = true;
+          }
+        }
+        onchangeModalidade();
+     
+    //--------------------Fim Representatividade -----------------------------------
+
 
 // ---------------------Comeco tipo----------------------------
       //Variavel para escolapublica
