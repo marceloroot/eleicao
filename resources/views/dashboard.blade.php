@@ -1,16 +1,21 @@
 <x-app-layout>
   <x-slot name="header">
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-          {{ __('Edição dados so poderar ocoorer até o dia 20/01/2022') }}
+          {{ __('Edição dados so poderar ocoorer até o dia 07/02/2022') }}
+       
          
       </h2>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
         Campos com <span style="color:red">*</span> sao obrigatório
-       
+        @error('mairo2mb')
+         <p>{{ $message }}</p>
+        @enderror
     </h2>
   </x-slot>
  
-    
+
+  
+
       <div class="container">
    
          <form class="mt-5" method="POST" action="{{ route('storearquivo') }}" enctype="multipart/form-data">
@@ -36,8 +41,8 @@
                               <div class="mb-3 col-6">      
                               
                                 <input type="file" name="arquivo" id="arquivo">
-                                @if($errors->has('arquivo'))
-                                  <div class="error">{{ $errors->first('arquivo') }}</div>
+                                @if($errors->has('mairo2mb'))
+                                  <div class="error">{{ $errors->first('mairo2mb') }}</div>
                                 @endif
                             </div>
                          </div>

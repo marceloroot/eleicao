@@ -91,7 +91,7 @@
 
                         <div class="mb-3 col-6">      
                             <label for="nome" class="form-label">Cep <span style="color:red">*</span> </label>
-                            <input type="text" class="form-control" maxlength="9"  id="cep" name="cep">
+                            <input type="text" class="form-control"  required maxlength="9"  id="cep" name="cep">
                             @if($errors->has('cep'))
                               <div class="error">{{ $errors->first('cep') }}</div>
                             @endif
@@ -125,7 +125,7 @@
                 <div class="row">
                  <div class="mb-3  col-6">
                     <label for="tags" class="form-label">Bairro</label>
-                    <input type="text" class="form-control" required name="bairro" id="bairro">
+                    <input type="text" required class="form-control" required name="bairro" id="bairro">
                     @if($errors->has('bairro'))
                     <div class="error">{{ $errors->first('bairro') }}</div>
                     @endif
@@ -193,7 +193,8 @@
                       </div>
                   
                       <div class="mb-3  col-6" id="regiaodiv">
-                        <label for="tags" class="form-label">regiao<span style="color:red">*</span></label>
+                        <label for="tags" class="form-label">Regiões<span style="color:red">*</span></label>
+                        <a style="font-weight: bold" href="{{url('regioes')}}" target="_blank">Clique para ver as Descrição das regiões</a>
                         <select class="form-select" name="regiao"  id="regiao" aria-label="regiao">
                           <option value="">Selecione uma opcao</option>
                           <option value="Região Vila Formosa">Região Vila Formosa</option>
@@ -207,14 +208,25 @@
                         <div class="error">{{ $errors->first('regiao') }}</div>
                         @endif
                       </div>
-
-                   
+                     
+                      
 
                 </div>
-                    
+                
+                <div class="row">
+                   
+                  <div class="mb-3  col-6"  id="divregistrocc">
+                    <label for="tags" class="form-label">Registro de Consolho de Classe</label>
+                    <input type="text" max="2" class="form-control"  name="registrocc" id="registrocc" />
+                    @if($errors->has('registrocc'))
+                    <div class="error">{{ $errors->first('registrocc') }}</div>
+                    @endif
+                  </div>
+
+                </div>
             
 
-                 
+                
                 
 
                   <button class="btn btn-danger mt-4 mb-2" style="display:inline"  type="submit">Inscrever-se</button>
@@ -235,6 +247,7 @@
 document.getElementById('regiao').required = true;
 document.getElementById('cnesdiv').style.visibility = 'hidden' ;
 document.getElementById('cnpjdiv').style.visibility = 'hidden' ;
+document.getElementById('divregistrocc').style.visibility = 'hidden' ;
 
 const onchangeModalidade =() =>{
  const mod =  document.getElementById('modalidade').value;
@@ -266,6 +279,17 @@ const onchangeModalidade =() =>{
  else{
   document.getElementById('cnpj').required = false;
   document.getElementById('cnpjdiv').style.visibility = 'hidden' ;
+ }
+
+ if(mod.trim() == 'PROFISSIONAL DE SAÚDE')
+ {
+  document.getElementById('registrocc').required = true;
+  document.getElementById('divregistrocc').style.visibility = 'visible';
+ }
+ else{
+  document.getElementById('registrocc').value = '';
+  document.getElementById('registrocc').required = false;
+  document.getElementById('divregistrocc').style.visibility = 'hidden' ;
  }
 }
 

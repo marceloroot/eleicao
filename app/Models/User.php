@@ -35,6 +35,7 @@ class User extends Authenticatable
         'tipo',
         'regiao',
         'cnes',
+        'registrocc',
         'modalidade',
     ];
 

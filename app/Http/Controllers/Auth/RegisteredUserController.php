@@ -65,6 +65,7 @@ class RegisteredUserController extends Controller
             'tipo'=> $request->tipo,
             'regiao'=> $request->regiao,
             'cnes'=> $request->cnes,
+            'registrocc'=>$request->registrocc,
             'modalidade'=> $request->modalidade,
         ])->givePermissionTo('user');
 

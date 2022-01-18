@@ -30,6 +30,7 @@ Route::get('/listaarquivoadm/{id}',[InscricaoController::class,'listaarquivoadm'
 Route::post('/storearquivo', [InscricaoController::class, 'storearquivo'])->middleware(['auth'])->name('storearquivo');
 Route::get('/atualiza',[InscricaoController::class,'atualiza'])->middleware(['auth'])->name('atualiza');
 Route::get('/download/{id}',[InscricaoController::class,'download'])->middleware(['auth'])->name('download');
+Route::get('/regioes',[InscricaoController::class,'mostrarregioes'])->name('mostrarregioes');
 
 
 

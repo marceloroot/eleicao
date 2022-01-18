@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Edição dados so poderar ocoorer até o dia 20/01/2022') }}
+            {{ __('Edição dados so poderar ocoorer até o dia 07/02/2022') }}
            
         </h2>
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -65,7 +65,7 @@
 
                         <div class="mb-3 col-6">      
                             <label for="nome" class="form-label">Cep <span style="color:red">*</span> </label>
-                            <input type="text" class="form-control" maxlength="9"  id="cep" name="cep" value={{$inscricao->cep}}>
+                            <input type="text" class="form-control" required maxlength="9"  id="cep" name="cep" value={{$inscricao->cep}}>
                             @if($errors->has('cep'))
                               <div class="error">{{ $errors->first('cep') }}</div>
                             @endif
@@ -168,7 +168,10 @@
                       </div>
                   
                       <div class="mb-3  col-6" id="regiaodiv">
-                        <label for="tags" class="form-label">regiao<span style="color:red">*</span></label>
+                        <label for="tags" class="form-label">Regiões<span style="color:red">*</span>
+                        <a style="font-weight: bold" href="{{url('regioes')}}" target="_blank">Clique para ver as Descrição das regiões</a>
+                        
+                        </label>
                         <select class="form-select" name="regiao" required id="regiao" aria-label="regiao">
                           <option value="">Selecione uma opcao</option>
                           <option value="Região Vila Formosa">Região Vila Formosa</option>
@@ -181,6 +184,19 @@
                         @if($errors->has('regiao'))
                         <div class="error">{{ $errors->first('regiao') }}</div>
                         @endif
+                      </div>
+
+                      <div class="row">
+                   
+                        <div class="mb-3  col-6"  id="divregistrocc">
+                          <label for="tags" class="form-label">Registro de Consolho de Classe</label>
+                          <input type="text" max="2" class="form-control"  name="registrocc" id="registrocc" />
+                          @if($errors->has('registrocc'))
+                          <div class="error">{{ $errors->first('registrocc') }}</div>
+                          @endif
+                        </div>
+                        
+      
                       </div>
 
                 </div>
@@ -205,6 +221,9 @@ document.getElementById('cnesdiv').style.visibility = 'hidden' ;
 document.getElementById('cnpjdiv').style.visibility = 'hidden' ;
 document.getElementById('cnes').value = {!! json_encode($inscricao->cnes) !!};
 document.getElementById('cnpj').value = {!! json_encode($inscricao->cnpj) !!};
+document.getElementById('registrocc').value = {!! json_encode($inscricao->registrocc) !!};
+
+
 const onchangeModalidade =() =>{
  const mod =  document.getElementById('modalidade').value;
  document.getElementById('cnes').value ="";
@@ -229,16 +248,28 @@ const onchangeModalidade =() =>{
     document.getElementById('cnesdiv').style.visibility = 'hidden' ;
   }
 
-  if(mod.trim() == 'REPRESENTANTES DE ENTIDADES')
- {
-  document.getElementById('cnpj').required = true;
-  document.getElementById('cnpjdiv').style.visibility = 'visible';
- }
- else{
-  document.getElementById('cnpj').value = '';
-  document.getElementById('cnpj').required = false;
-  document.getElementById('cnpjdiv').style.visibility = 'hidden' ;
- }
+      if(mod.trim() == 'REPRESENTANTES DE ENTIDADES')
+    {
+      document.getElementById('cnpj').required = true;
+      document.getElementById('cnpjdiv').style.visibility = 'visible';
+    }
+    else{
+      document.getElementById('cnpj').value = '';
+      document.getElementById('cnpj').required = false;
+      document.getElementById('cnpjdiv').style.visibility = 'hidden' ;
+    }
+     
+        
+    if(mod.trim() == 'PROFISSIONAL DE SAÚDE')
+    {
+      document.getElementById('registrocc').required = true;
+      document.getElementById('divregistrocc').style.visibility = 'visible';
+    }
+    else{
+      document.getElementById('registrocc').value = '';
+      document.getElementById('registrocc').required = false;
+      document.getElementById('divregistrocc').style.visibility = 'hidden' ;
+    }
   }
 
 

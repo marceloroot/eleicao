@@ -32,6 +32,7 @@ class CreateUsersTable extends Migration
             $table->string('tipo',200);
             $table->string('regiao',200)->nullable();
             $table->string('cnes',200)->nullable();
+            $table->string('registrocc',200)->nullable();
             $table->string('modalidade',200)->nullable();
             $table->rememberToken();
             $table->timestamps();

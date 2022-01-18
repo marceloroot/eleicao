@@ -21,6 +21,10 @@
                     <x-nav-link :href="route('atualiza')" :active="request()->routeIs('pdf')">
                         {{ __('Edição de Registro') }}
                     </x-nav-link>
+                    
+                    <x-nav-link :href="route('mostrarregioes')" :active="request()->routeIs('mostrarregioes')">
+                        {{ __('Regiões') }}
+                    </x-nav-link>
                     @endcan
 
                     @can('admin')
