@@ -54,7 +54,7 @@
     <header class="masthead text-center text-white">
         <div class="masthead-content">
             <div class="container px-5">
-                <h1 class="masthead-heading mb-0">Eleiçao da Saúde da Prefeitura de Alfenas</h1>
+                <h1 class="masthead-heading mb-0" style="font-size:69px; color:#4F4F4F; font-weight: :bold;">Inscrição para Eleição do Conselho Municipal de Saúde de Alfenas</h1>
                 @auth
                 <a class="btn btn-primary btn-xl rounded-pill mt-5"  href="{{ route('dashboard') }}">Ver Inscrição</a>
                 @else

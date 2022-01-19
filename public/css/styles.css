@@ -11322,11 +11322,7 @@ header.masthead {
   overflow: hidden;
   padding-top: calc(7rem + 72px);
   padding-bottom: 7rem;
-  background: linear-gradient(0deg, #0d6efd 0%, #198754 100%);
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-attachment: scroll;
-  background-size: cover;
+  background-image: url(../assets/img/imgfundo.png);
 }
 header.masthead .masthead-content {
   z-index: 1;
