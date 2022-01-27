@@ -207,14 +207,14 @@ class InscricaoController extends Controller
     {
 
 
-        $data  = Inscricao::Where('user_id', auth()->user()->id)->first();
+        $data  = User::Where('id', auth()->user()->id)->first();
 
         return view('guia', compact('data'));
     }
 
     public function pdf()
     {
-        $data  = Inscricao::Where('user_id', auth()->user()->id)->first();
+        $data  = User::Where('id', auth()->user()->id)->first();
         if($data){
         // share data to view
         view()->share('guia', $data);

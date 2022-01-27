@@ -25,6 +25,10 @@
                     <x-nav-link :href="route('mostrarregioes')" :active="request()->routeIs('mostrarregioes')">
                         {{ __('Regiões') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('pdf')" :active="request()->routeIs('pdf')" target="_blank">
+                        {{ __('Comprovante') }}
+                    </x-nav-link>
                     @endcan
 
                     @can('admin')
