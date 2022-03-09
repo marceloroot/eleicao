@@ -25,6 +25,7 @@ class InscricaoController extends Controller
 
         return View('mostrarregioes',compact('data'));
     }
+
   //ADM---------------------------------------------------------------
   public function listaadm()
   {
@@ -34,6 +35,18 @@ class InscricaoController extends Controller
       $data =  User::all();
       
       return View('listaadm',compact('data'));
+   
+   
+  }
+  
+  public function listaadmcomprovante()
+  {
+    if(auth()->user()->can('user')){
+        return redirect()->route('lista');
+      }
+      $data =  User::all();
+      
+      return View('listaadmcompravante',compact('data'));
    
    
   } 
@@ -153,6 +166,7 @@ class InscricaoController extends Controller
 
     public function atualiza()
     {
+        return redirect()->route('dashboard');
         if(auth()->user()->can('admin')){
             return redirect()->route('listaadm');
           }

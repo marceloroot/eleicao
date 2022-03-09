@@ -24,6 +24,7 @@ Route::get('/dashboard',[InscricaoController::class, 'dashboard'])->middleware([
 require __DIR__.'/auth.php';
 
 //Adm
+Route::get('/listaadmcomprovante',[InscricaoController::class,'listaadmcomprovante'])->middleware(['auth'])->name('listaadmcomprovante');
 Route::get('/listaadm',[InscricaoController::class,'listaadm'])->middleware(['auth'])->name('listaadm');
 Route::get('/listaarquivoadm/{id}',[InscricaoController::class,'listaarquivoadm'])->middleware(['auth'])->name('listaarquivoadm');
 

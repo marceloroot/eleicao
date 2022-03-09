@@ -35,6 +35,10 @@
                     <x-nav-link :href="route('listaadm')" :active="request()->routeIs('lista')">
                         {{ __('Lista') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('listaadmcomprovante')" :active="request()->routeIs('listacomprovante')">
+                        {{ __('Lista Comprovante') }}
+                    </x-nav-link>
                     @endcan
 
                 </div>
