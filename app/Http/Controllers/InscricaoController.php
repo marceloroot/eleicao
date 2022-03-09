@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\Arquivo;
 use PDF;
 use Illuminate\Support\Facades\Storage;
+use ZipArchive;
+use Illuminate\Support\Facades\File;
 
 class InscricaoController extends Controller
 {
@@ -63,6 +65,92 @@ class InscricaoController extends Controller
    
    
   } 
+
+
+
+  public function ziparquivo()
+  {
+    if(auth()->user()->can('user')){
+        return redirect()->route('lista');
+      }
+      $resultado  = Arquivo::with('user')->get();
+      
+
+
+
+
+
+      $zip = new ZipArchive();
+
+      $tmp_file = tempnam('.', '');
+      $res = $zip->open($tmp_file, ZipArchive::CREATE);
+      
+
+      foreach ($resultado as $r) {
+        
+          if ($res === TRUE) {
+              $pathdownload =  storage_path('app/'.$r->caminho);
+              $pathdownload = preg_replace( "/\r|\n/", "", $pathdownload );
+          
+              if(!empty($pathdownload)){
+                  
+                    
+                  
+                      $download_file = file_get_contents($pathdownload);
+              
+                      $zip->addFromString($r->user->id."-".$r->user->name."-".$r->user->cpf."/".basename($pathdownload), $download_file);
+                  
+                  
+              }
+              
+          } 
+          
+          
+      }
+  
+      $zip->close();
+
+      header('Content-disposition: attachment; filename="arquivos cms.zip"');
+      header('Content-type: application/zip');
+      readfile($tmp_file);
+      unlink($tmp_file);
+
+
+
+
+
+
+
+
+
+    //   $zip = new ZipArchive;
+    //   $zipfile = $data->user'.zip'; 
+     
+   
+    //   $zip->open($zipfile, ZipArchive::CREATE | ZipArchive::OVERWRITE);
+     
+    //   //$path = Storage::get($data->caminho);
+
+    //  $path =  storage_path('app/'.$data->caminho);
+    // //dd($path);
+    //   $invoice_file = $data->caminho;
+    //   $zip->addFile($path, $invoice_file);
+    //       $zip->close();
+        
+        
+        return response()->download($tmp_file);
+  }
+      
+
+ 
+   // Criar instancia de ZipArchive
+
+  
+
+
+   
+  
+
 
 
 //FIM ADM -----------------------------------------------------------

@@ -27,6 +27,7 @@ require __DIR__.'/auth.php';
 Route::get('/listaadmcomprovante',[InscricaoController::class,'listaadmcomprovante'])->middleware(['auth'])->name('listaadmcomprovante');
 Route::get('/listaadm',[InscricaoController::class,'listaadm'])->middleware(['auth'])->name('listaadm');
 Route::get('/listaarquivoadm/{id}',[InscricaoController::class,'listaarquivoadm'])->middleware(['auth'])->name('listaarquivoadm');
+Route::get('/ziparquivo',[InscricaoController::class,'ziparquivo'])->middleware(['auth'])->name('ziparquivo');
 
 Route::post('/storearquivo', [InscricaoController::class, 'storearquivo'])->middleware(['auth'])->name('storearquivo');
 Route::get('/atualiza',[InscricaoController::class,'atualiza'])->middleware(['auth'])->name('atualiza');

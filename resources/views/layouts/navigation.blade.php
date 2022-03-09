@@ -39,6 +39,10 @@
                     <x-nav-link :href="route('listaadmcomprovante')" :active="request()->routeIs('listacomprovante')">
                         {{ __('Lista Comprovante') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('ziparquivo')" :active="request()->routeIs('ziparquivo')">
+                        {{ __('Todos os arquivos zipados') }}
+                    </x-nav-link>
                     @endcan
 
                 </div>

@@ -23,12 +23,25 @@
 <table class="table" id="minhaTabela">
     <thead>
       <tr>
-        <th>Codigo</th>
+        <th>CODITO</th>
         <th>NOME</th>
+        <th>EMAIL</th>
         <th>CPF</th>
-        <th>REPRESENTATIVIDADE</th>
-        <th>Regioes</th>
+        <th>TELEFONE</th>
+        <th>CEP</th>
+        <th>CNPJ</th>
+        <th>TITULO DE ELEITOR</th>
+        <th>LOGRADOURO</th>
+        <th>COMPLEMENTO</th>
+        <th>BAIRRO</th>
+        <th>LOCALIDADE</th>
+        <th>ESTADO</th>
         <th>TIPO</th>
+        <th>REGIAO</th>
+        <th>CNES</th>
+        <th>REGISTRO CONSELHO</th>
+        <th>REPRENSENTATIVIDADE</th>
+
 
       </tr>
     </thead>
@@ -38,10 +51,22 @@
         <tr>
           <td>{{Str::upper($item->id)}}</td>
             <td>{{Str::upper($item->name)}}</td>
+            <td>{{Str::upper($item->email)}}</td>
             <td>{{Str::upper($item->cpf)}}</td>
-            <td>{{Str::upper($item->modalidade)}}</td>
-            <td>{{Str::upper($item->regiao)}}</td>
+            <td>{{Str::upper($item->telefone)}}</td>
+            <td>{{Str::upper($item->cep)}}</td>
+            <td>{{Str::upper($item->cnpj)}}</td>
+            <td>{{Str::upper($item->tituloeleitor)}}</td>
+            <td>{{Str::upper($item->logradouro)}}</td>
+            <td>{{Str::upper($item->complemento)}}</td>
+            <td>{{Str::upper($item->bairro)}}</td>
+            <td>{{Str::upper($item->localidade)}}</td>
+            <td>{{Str::upper($item->uf)}}</td>
             <td>{{Str::upper($item->tipo)}}</td>
+            <td>{{Str::upper($item->regiao)}}</td>
+            <td>{{Str::upper($item->cnes)}}</td>
+            <td>{{Str::upper($item->registrocc)}}</td>
+            <td>{{Str::upper($item->modalidade)}}</td>
           </tr>
        
         @endforeach
