@@ -84,7 +84,7 @@ class InscricaoController extends Controller
       $zip = new ZipArchive();
 
       $tmp_file = tempnam('.', '');
-      $res = $zip->open($tmp_file, ZipArchive::CREATE);
+      $res = $zip->open($tmp_file, ZipArchive::CREATE || ZipArchive::OVERWRITE );
       
 
       foreach ($resultado as $r) {
@@ -118,28 +118,6 @@ class InscricaoController extends Controller
 
 
 
-
-
-
-
-
-
-    //   $zip = new ZipArchive;
-    //   $zipfile = $data->user'.zip'; 
-     
-   
-    //   $zip->open($zipfile, ZipArchive::CREATE | ZipArchive::OVERWRITE);
-     
-    //   //$path = Storage::get($data->caminho);
-
-    //  $path =  storage_path('app/'.$data->caminho);
-    // //dd($path);
-    //   $invoice_file = $data->caminho;
-    //   $zip->addFile($path, $invoice_file);
-    //       $zip->close();
-        
-        
-        return response()->download($tmp_file);
   }
       
 
