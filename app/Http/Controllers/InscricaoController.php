@@ -70,6 +70,7 @@ class InscricaoController extends Controller
 
   public function ziparquivo()
   {
+    ini_set('memory_limit', '2048M');
     if(auth()->user()->can('user')){
         return redirect()->route('lista');
       }
