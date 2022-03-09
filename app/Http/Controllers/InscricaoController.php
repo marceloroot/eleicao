@@ -70,7 +70,7 @@ class InscricaoController extends Controller
 
   public function ziparquivo()
   {
-    ini_set('memory_limit', '2048M');
+    ini_set('memory_limit', -1);
     if(auth()->user()->can('user')){
         return redirect()->route('lista');
       }
@@ -111,7 +111,7 @@ class InscricaoController extends Controller
   
       $zip->close();
 
-      header('Content-disposition: attachment; filename="arquivos cms.zip"');
+      header('Content-disposition: attachment; filename="my file.zip"');
       header('Content-type: application/zip');
       readfile($tmp_file);
       unlink($tmp_file);
