@@ -233,7 +233,7 @@ class InscricaoController extends Controller
 
     public function atualiza()
     {
-        return redirect()->route('dashboard');
+        //return redirect()->route('dashboard');
         if(auth()->user()->can('admin')){
             return redirect()->route('listaadm');
           }

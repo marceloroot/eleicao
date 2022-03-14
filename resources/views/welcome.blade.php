@@ -58,7 +58,7 @@
                 @auth
                 <a class="btn btn-primary btn-xl rounded-pill mt-5"  href="{{ route('dashboard') }}">Ver Inscrição</a>
                 @else
-                <a class="btn btn-primary btn-xl rounded-pill mt-5"  href="{{ route('register') }}">Prazo para inscriçao venceu</a>
+                <a class="btn btn-primary btn-xl rounded-pill mt-5"  href="{{ route('register') }}">Inscrição</a>
                 @endauth
 
                 <a class="btn btn-primary btn-xl rounded-pill mt-5" target="_blank" href="http://editais.alfenas.mg.gov.br/Uploads/ArquivoSecretaria/202112061236170.pdf">Manual do Candidato</a>
