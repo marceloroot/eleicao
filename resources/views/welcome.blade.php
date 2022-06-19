@@ -43,7 +43,7 @@
                     @else
                     <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Entrar</a></li>
                     @if (Route::has('register'))
-                   <!-- <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Inscrever-se</a></li> -->
+                   <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Inscrever-se</a></li>
                     @endif
                     @endauth
                 </ul>
@@ -54,14 +54,14 @@
     <header class="masthead text-center text-white">
         <div class="masthead-content">
             <div class="container px-5">
-                <h1 class="masthead-heading mb-0" style="font-size:69px; color:#4F4F4F; font-weight: :bold;">Inscrição para Eleição do Conselho Municipal de Saúde de Alfenas</h1>
+                <h1 class="masthead-heading mb-0" style="font-size:60px; color:#4F4F4F; font-weight: :bold;">ELEIÇÕES COMPLEMENTARES DO CONSELHO MUNICIPAL DE SAÚDE DE ALFENAS</h1>
                 @auth
                 <a class="btn btn-primary btn-xl rounded-pill mt-5"  href="{{ route('dashboard') }}">Ver Inscrição</a>
                 @else
                 <a class="btn btn-primary btn-xl rounded-pill mt-5"  href="{{ route('register') }}">Inscrição</a>
                 @endauth
 
-                <a class="btn btn-primary btn-xl rounded-pill mt-5" target="_blank" href="http://editais.alfenas.mg.gov.br/Uploads/ArquivoSecretaria/202112061236170.pdf">Manual do Candidato</a>
+                <a class="btn btn-primary btn-xl rounded-pill mt-5" target="_blank" href="http://editais.alfenas.mg.gov.br/Uploads/ArquivoSecretaria/202206011632430.pdf">Edital</a>
             </div>
         </div>
       

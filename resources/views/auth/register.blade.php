@@ -45,7 +45,7 @@
                 </div>
                 
                 <div class="mb-3 col-6">
-                    <label for="nome" class="form-label">Senha <span style="color:red">*</span></label>
+                    <label for="nome" class="form-label">Senha (Senha com 8 digitos) <span style="color:red">*</span></label>
                     <input type="password" class="form-control"  required id="password" name="password">
                     @if($errors->has('password'))
                     <div class="error">{{ $errors->first('password') }}</div>
@@ -162,7 +162,7 @@
                 <!--Titulo cnpj-->
                 <div class="row">
                   <div class="mb-3  col-6">
-                     <label for="tags" class="form-label">Titulo de Eleiçao</label>
+                     <label for="tags" class="form-label">Titulo de Eleitor</label>
                      <input type="text" class="form-control" required name="tituloeleitor" id="tituloeleitor">
                      @if($errors->has('tituloeleitor'))
                      <div class="error">{{ $errors->first('tituloeleitor') }}</div>
@@ -183,9 +183,7 @@
                     <div class="mb-3  col-6">
                         <label for="tags" class="form-label">Tipo<span style="color:red">*</span></label>
                         <select class="form-select" name="tipo" required id="tipo" aria-label="tipo">
-                          <option value="">Selecione uma opcao</option>
-                          <option value="ELEITOR">ELEITOR</option>
-                          <option value="CANDIDATO">CANDIDATO</option>
+                          <option value="CANDIDATO" selected>CANDIDATO</option>
                         </select>
                         @if($errors->has('tipo'))
                         <div class="error">{{ $errors->first('tipo') }}</div>
@@ -216,7 +214,7 @@
                 <div class="row">
                    
                   <div class="mb-3  col-6"  id="divregistrocc">
-                    <label for="tags" class="form-label">Registro de Consolho de Classe</label>
+                    <label for="tags" class="form-label">Registro no Conselho de Classe</label>
                     <input type="text" max="2" class="form-control"  name="registrocc" id="registrocc" />
                     @if($errors->has('registrocc'))
                     <div class="error">{{ $errors->first('registrocc') }}</div>

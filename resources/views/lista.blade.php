@@ -94,7 +94,7 @@
             <td>{{Str::upper($item->nome)}}</td>
             <td>{{Str::upper($item->descricao)}}</td>
             <td>{{Str::upper($item->caminho)}}</td>
-            <td><a href="{{ Storage::url("{$item->caminho}") }}">Ver Arquivo</a></td>
+            <td><a href="{{ Storage::url("{$item->caminho}") }}" target="_blank">Ver Arquivo</a></td>
           </tr>
         url
         @endforeach

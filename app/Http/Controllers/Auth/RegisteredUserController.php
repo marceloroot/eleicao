@@ -71,9 +71,10 @@ class RegisteredUserController extends Controller
         ])->givePermissionTo('user');
 
         event(new Registered($user));
-
+         
         Auth::login($user);
-
+        $data  = $user;
+        \Mail::to($data->email)->send(new \App\Mail\ComprovanteEmail($data));
         return redirect(RouteServiceProvider::HOME);
     }
 }

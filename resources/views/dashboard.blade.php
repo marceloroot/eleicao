@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="header">
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-          {{ __('Edição dados so poderar ocoorer até o dia 07/02/2022') }}
+          {{ __('Edição dados so poderar ocoorer até o dia 11/07/2022') }}
        
          
       </h2>

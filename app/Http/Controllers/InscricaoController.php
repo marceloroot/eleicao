@@ -140,6 +140,7 @@ class InscricaoController extends Controller
         if(auth()->user()->can('admin')){
             return redirect()->route('listaadm');
           }
+
         return View('dashboard');
     }
 
@@ -289,7 +290,7 @@ class InscricaoController extends Controller
 
 
         $data  = User::Where('id', auth()->user()->id)->first();
-
+        \Mail::to($data->email)->send(new \App\Mail\ComprovanteEmail($data));
         return view('guia', compact('data'));
     }
 
@@ -301,6 +302,7 @@ class InscricaoController extends Controller
         view()->share('guia', $data);
         $pdf = PDF::loadView('guia', ['data' => $data]);
 
+        \Mail::to($data->email)->send(new \App\Mail\ComprovanteEmail($data));
         // download PDF file with download method
         return $pdf->stream();
       }
