@@ -34,7 +34,7 @@
      <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
         <div class="container px-5">
             <a class="navbar-brand d-flex" href="#page-top">
-                <img src="https://www.novaconcursos.com.br/portal/wp-content/uploads/2015/07/Prefeitura-de-alfenas.jpg" style="max-width:80px;max-height:80px; margin-top:15px;border-radius:5px;" /><span class="ml-5" style="margin-top: 2rem">Eleiçao Alfenas 2021</span></a>
+                <img src="https://www.novaconcursos.com.br/portal/wp-content/uploads/2015/07/Prefeitura-de-alfenas.jpg" style="max-width:80px;max-height:80px; margin-top:15px;border-radius:5px;" /><span class="ml-5" style="margin-top: 2rem">Eleição Alfenas 2022</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
